@@ -25,3 +25,5 @@ for (my $i = 0; $i < 100; $i += 1.0/16000) {
 # Star Trek vs. Battlestar Galactica/Firefly: Weltraumschießereien
 
 # http://synthesizeracademy.com/noise/
+
+# https://github.com/spell-music/csound-expression
