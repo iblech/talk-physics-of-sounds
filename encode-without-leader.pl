@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# echo -n ABAHHGAFEADCEB | perl % 11000 950 1305 1717 2123 3000 | aplay -c 1 -f S32_LE -r44100
+# echo -n ABAHHGAFEADCEB | perl % 950 1305 1717 2123 3000 | aplay -c 1 -f S32_LE -r44100
 
 sub max { $_[0] >= $_[1] ? $_[0] : $_[1] }
 
@@ -14,7 +14,7 @@ sub next_data {
     }
 
     read(STDIN, my $char, 1) == 1 or do { $is_last = 1; return 1 };
-    return 2 * (ord($char) - 65);
+    return ord($char) - 65;
 }
 
 while(1) {
