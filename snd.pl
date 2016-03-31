@@ -7,7 +7,7 @@ sub max { $_[0] >= $_[1] ? $_[0] : $_[1] }
 my @phase;
 #push @phase, 10*rand() for 0..7;
 
-for (my $i = 0; $i < 5; $i += 1.0/44100) {
+for (my $i = 0; $i < 10; $i += 1.0/44100) {
   print pack "l", 500000000*(
      sin(($ARGV[0])*2*3.14159*($i + $phase[0])) +
      sin(($ARGV[1])*2*3.14159*($i + $phase[1])) +

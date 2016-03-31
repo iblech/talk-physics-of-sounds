@@ -1,10 +1,8 @@
 #!/usr/bin/perl
-# arecord -r44100 -f S32_LE -t raw 2>/dev/null | ./fourier2 | ./decode-without-leader.pl 950 1305 1717 2123 3000 2>/dev/null
 
-use warnings;
 use strict;
 
-use constant EPS => 20;
+use constant EPS => 1;  # gibt eh keinen Unterschied zwischen allen Werten < 40
 
 my $leader = $ARGV[0];
 my @detect = @ARGV;
@@ -28,13 +26,13 @@ sub contains {
 print STDERR "/"  until contains($leader, hear());
 #print STDERR "\\" while contains($leader, hear());
 #hear();
-hear() for 1..18;
+hear() for 1..8;
 print STDERR "\n";
 
 my $num = 0;
 while(1) {
     my @freq = hear();
-#   print STDERR "@freq\n";
+    print STDERR "@freq\n";
 
 #   last if contains($leader, @freq);
 
@@ -49,8 +47,8 @@ while(1) {
     }
 
     print STDERR "\n";
-    if($num % 12 == 1) {
-        print STDERR chr(65 + $data);
+    if($num % 8 == 4) {
+        print chr(65 + $data);
         print STDERR "\n";
     }
 
