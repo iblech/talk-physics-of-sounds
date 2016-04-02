@@ -1,5 +1,4 @@
 #include <fftw3.h>
-#include <sndfile.h>
 #include <math.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -33,7 +32,7 @@ void print_dominant(double xs[], int len) {
     for(int i = 0; i < 20; i++) {
         struct peak p = find_peak(xs, len, upper_limit);
         int freq = NUM_BLOCKS * p.ix;
-        if(freq >= 2000 && freq <= 15000)
+        // if(freq >= 2000 && freq <= 15000)
             printf("%d@%.1e ", freq, p.value);
         upper_limit = p.value;
     }
@@ -44,7 +43,7 @@ double       samples[SAMPLES_PER_BLOCK];
 fftw_complex out[NUM_FREQUENCIES];
 fftw_plan    plan;
 
-long         input[SAMPLES_PER_BLOCK];
+int32_t      input[SAMPLES_PER_BLOCK];
 
 void process_piece(double* xs) {
     /*
@@ -57,7 +56,7 @@ void process_piece(double* xs) {
         sample = byte1 + (byte2 << 8) + (byte3 << 16) + (byte4 << 24);
         samples[j] = sample / 111111111;
     }*/
-    if(fread(input, sizeof(long), SAMPLES_PER_BLOCK, stdin) != SAMPLES_PER_BLOCK) {
+    if(fread(input, sizeof(int32_t), SAMPLES_PER_BLOCK, stdin) != SAMPLES_PER_BLOCK) {
         fprintf(stderr, "End of input of input error.\n");
         exit(1);
     }
