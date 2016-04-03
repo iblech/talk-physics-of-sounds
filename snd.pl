@@ -38,3 +38,6 @@ for (my $i = 0; $i < 10; $i += 1.0/44100) {
 # http://synthesizeracademy.com/noise/
 
 # https://github.com/spell-music/csound-expression
+# https://homepages.abdn.ac.uk/mth192/pages/html/maths-music.html
+
+# xwd | aplay -r$((44100*4)) -f S16_LE -c2
