@@ -27,8 +27,8 @@ int main(int argc, char* argv[]) {
 
         double lambda = (double)i / NUM_SAMPLES;
         double amplitude =
-            lambda <= 0.01 ? 100 * lambda :
-            lambda <= 0.99 ? 1 : 100 * (1-lambda);
+            lambda <= 0.05 ? 20 * lambda :
+            lambda <= 0.95 ? 1 : 20 * (1-lambda);
 
         uint32_t s = BASE * amplitude * sample;
         fwrite(&s, sizeof(s), 1, stdout);
