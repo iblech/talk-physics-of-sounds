@@ -43,7 +43,7 @@ fftw_plan     plan;
 fftw_complex* out;       // frequency coefficients
 struct pair*  spectrum;
 
-// Read and analyze a block of samples.
+// Read a block of samples from STDIN and calculate its Fourier transform.
 //
 // Touches the global arrays input, samples, and out.
 // The useful result is in the array spectrum.
@@ -64,7 +64,6 @@ void read_samples(const int num_samples, const int sampling_frequency) {
         spectrum[i].b = sqrt(out[i][0]*out[i][0] + out[i][1]*out[i][1]);
     }
 }
-
 
 int main(const int argc, const char* const argv[]) {
     // bitrate
@@ -116,7 +115,7 @@ int main(const int argc, const char* const argv[]) {
 
         #define WINDOW 20
         fprintf(stderr, "Peaks: ");
-        for(int i = foo; i < num_frequencies - WINDOW - 1; i++) {
+        for(int i = WINDOW; i < num_frequencies - WINDOW - 1; i++) {
             double sum = 0;
             for(int j = i - WINDOW; j <= i + WINDOW; j++) {
                 if(j == i) continue;
@@ -134,6 +133,10 @@ int main(const int argc, const char* const argv[]) {
 
     // never reached
     fftw_destroy_plan(plan);
+    free(input);
+    free(samples);
+    free(out);
+    free(spectrum);
 
     return 0;
 }

@@ -18,4 +18,4 @@ EOF
     sleep 5  # give gnuplot time to start
 
     arecord -f S32_LE -r $bitrate -t raw | ./watch-spectrum $bitrate $samples_per_block $max_freq $min_freq
-} >/dev/null # | /usr/bin/gnuplot -noraise
+} | gnuplot -noraise
