@@ -1,0 +1,26 @@
+CC=gcc
+CFLAGS=-Wall -O2 -std=c99
+
+BIN=raw2human human2raw generate-sines print-spectrum watch-spectrum
+
+.PHONY: clean
+
+raw2human: raw2human.c
+	$(CC) $(CFLAGS) -o $@ $<
+
+human2raw: human2raw.c
+	$(CC) $(CFLAGS) -o $@ $<
+
+print-spectrum: print-spectrum.c
+	$(CC) $(CFLAGS) -o $@ $< -lfftw
+
+watch-spectrum: watch-spectrum.c
+	$(CC) $(CFLAGS) -o $@ $< -lfftw
+
+generate-sines: generate-sines.c
+	$(CC) $(CFLAGS) -o $@ $< -lm
+
+all: $(BIN)
+
+clean:
+	rm -f $(BIN)
