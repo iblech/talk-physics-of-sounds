@@ -1,0 +1,7 @@
+* Discuss theory of sound
+  * longitudinal waves etc.
+  * pressure and rainworm animation: http://waitbutwhy.com/2016/03/sound.html
+  * limits to the maximum loudness
+
+* Discuss discretization
+  * 
