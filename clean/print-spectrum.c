@@ -3,7 +3,7 @@
  *
  * Compile with
  *
- *     gcc -Wall -std=c99 -O2 -o print-spectrum print-spectrum.c -lfftw
+ *     gcc -Wall -std=c99 -O2 -o print-spectrum print-spectrum.c -lfftw3
  *
  * and make sure that the header files for fftw are installed (package
  * libfftw3-dev on Debian-based distributions).

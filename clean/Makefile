@@ -12,10 +12,10 @@ human2raw: human2raw.c
 	$(CC) $(CFLAGS) -o $@ $<
 
 print-spectrum: print-spectrum.c
-	$(CC) $(CFLAGS) -o $@ $< -lfftw
+	$(CC) $(CFLAGS) -o $@ $< -lfftw3
 
 watch-spectrum: watch-spectrum.c
-	$(CC) $(CFLAGS) -o $@ $< -lfftw
+	$(CC) $(CFLAGS) -o $@ $< -lfftw3
 
 generate-sines: generate-sines.c
 	$(CC) $(CFLAGS) -o $@ $< -lm
