@@ -22,9 +22,9 @@
 #include <math.h>
 
 void read_samples(const int num_samples, double samples[num_samples]) {
-    long input[num_samples];
+    int32_t input[num_samples];
 
-    if(fread(input, sizeof(long), num_samples, stdin) != num_samples) {
+    if(fread(input, sizeof(int32_t), num_samples, stdin) != num_samples) {
         fprintf(stderr, "Couldn't read all input samples.\n");
         exit(1);
     }
