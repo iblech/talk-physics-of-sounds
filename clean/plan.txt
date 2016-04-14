@@ -1,7 +1,30 @@
-* Discuss theory of sound
+* discuss theory of sound
   * longitudinal waves etc.
   * pressure and rainworm animation: http://waitbutwhy.com/2016/03/sound.html
   * limits to the maximum loudness
+  * sci-fi example
 
-* Discuss discretization
-  * 
+* discuss discretization
+  * sampling
+  * format to store waveforms
+  * aplay/arecord
+  * from here on: ./watch-waveform.sh
+
+* feedback demo
+
+* random demo
+
+* generate sines using awk (state inspiration: http://blog.robertelder.org/bash-one-liner-compose-music/)
+  * test range of hearing
+  * test other waveforms
+  * musical scale
+
+* discuss Fourier transform
+  * ./watch-spectrum.sh
+  * discuss the idea: *every* waveform is a superposition of sine waves; and how to find those.
+  * http://bgrawi.com/Fourier-Visualizations/
+  * https://math.stackexchange.com/questions/1002/fourier-transform-for-dummies
+  * https://www.youtube.com/watch?v=QVuU2YCwHjw
+  * demo (somebody should sing a note)
+
+* modem demo
