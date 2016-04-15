@@ -1,3 +1,5 @@
+* sound illusion
+
 * discuss theory of sound
   * longitudinal waves etc.
   * pressure and rainworm animation: http://waitbutwhy.com/2016/03/sound.html
@@ -25,6 +27,6 @@
   * http://bgrawi.com/Fourier-Visualizations/
   * https://math.stackexchange.com/questions/1002/fourier-transform-for-dummies
   * https://www.youtube.com/watch?v=QVuU2YCwHjw
-  * demo (somebody should sing a note)
+  * demo with simple-minded-fft.sh (somebody should sing a note)
 
 * modem demo

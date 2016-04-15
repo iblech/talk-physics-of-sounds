@@ -3,7 +3,9 @@ CFLAGS=-Wall -O2 -std=c99
 
 BIN=raw2human human2raw generate-sines print-spectrum watch-spectrum
 
-.PHONY: clean
+.PHONY: clean all
+
+all: $(BIN)
 
 raw2human: raw2human.c
 	$(CC) $(CFLAGS) -o $@ $<
@@ -19,8 +21,6 @@ watch-spectrum: watch-spectrum.c
 
 generate-sines: generate-sines.c
 	$(CC) $(CFLAGS) -o $@ $< -lm
-
-all: $(BIN)
 
 clean:
 	rm -f $(BIN)
