@@ -5,7 +5,7 @@
 #
 # Example usage:
 #
-#     ./generate-sine 8000 440 | ./pipe-via-sound.sh 8000 44100 | ./print-spectrum 44100
+#     ./generate-sines 8000 8000 440 | ./pipe-via-sound.sh 8000 44100 | ./print-spectrum 44100
 #
 # The first parameter specifies the input bitrate, the second the output
 # bitrate. Both default to 44100. An optional third parameter specifies how
