@@ -55,8 +55,9 @@ int main(const int argc, const char* const argv[]) {
     fftw_destroy_plan(plan);
 
     for(int i = 0; i < num_frequencies; i++) {
-        printf("%d\t%.0f\n", i * sampling_frequency / num_samples,
-            sqrt(out[i][0]*out[i][0] + out[i][1]*out[i][1]));
+        printf("%d\t%.0f\t%.1f\n", i * sampling_frequency / num_samples,
+            sqrt(out[i][0]*out[i][0] + out[i][1]*out[i][1]),
+            atan2(out[i][1], out[i][0]));
     }
 
     return 0;
