@@ -28,5 +28,7 @@
   * https://math.stackexchange.com/questions/1002/fourier-transform-for-dummies
   * https://www.youtube.com/watch?v=QVuU2YCwHjw
   * demo with simple-minded-fft.sh (somebody should sing a note)
+  * mention insight I learned from Joscha Bach: our ears necessarily perform a
+    Fourier transform, since our brain doesn't work in the kHz range
 
 * modem demo
