@@ -32,7 +32,7 @@ print STDERR "\n";
 my $num = 0;
 while(1) {
     my @freq = hear();
-#   print STDERR "@freq\n";
+    print STDERR "@freq\n";
 
 #   last if contains($leader, @freq);
 

@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 #define SAMPLING_FREQUENCY 88200
-#define NUM_BLOCKS         40
+#define NUM_BLOCKS         8
 #define SAMPLES_PER_BLOCK  (SAMPLING_FREQUENCY / NUM_BLOCKS)
 #define NUM_FREQUENCIES    (SAMPLES_PER_BLOCK / 2 + 1)
 

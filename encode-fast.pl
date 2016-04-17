@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 use constant SAMPLING_RATE     => 88200;
-use constant BLOCKS_PER_SECOND => 5;
+use constant BLOCKS_PER_SECOND => 1;
 use constant SAMPLES_PER_BLOCK => SAMPLING_RATE / BLOCKS_PER_SECOND;
 
 {
@@ -22,7 +22,7 @@ use constant SAMPLES_PER_BLOCK => SAMPLING_RATE / BLOCKS_PER_SECOND;
 
 sub sum { my $s = 0; $s += $_ for @_; $s }
 
-sub calc_output { scalar `./generate-sine @{[ join " ", 1000000000, SAMPLING_RATE, SAMPLES_PER_BLOCK, @_ ]}` }
+sub calc_output { scalar `./clean/generate-sines @{[ join " ", SAMPLING_RATE, SAMPLES_PER_BLOCK, @_ ]}` }
 
 sub binary {
     my $data = shift;
@@ -47,6 +47,7 @@ my @output;
 for my $data (0 .. 2**@freqs - 1) {
     my @bits = binary($data);
 
+    warn $data;
     push @output, calc_output(map { $freqs[$_] } grep { $bits[$_] } 0..$#bits);
 }
 
