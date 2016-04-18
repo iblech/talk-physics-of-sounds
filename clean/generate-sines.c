@@ -16,7 +16,7 @@ int main(int argc, char* argv[]) {
     double frequencies[num_freqs];
     for(int j = 0; j < num_freqs; j++) {
         frequencies[j] = atof(argv[3 + j]);
-        fprintf(stderr, "%.0f ", frequencies[j]);
+        fprintf(stderr, "%.1f ", frequencies[j]);
     }
     fprintf(stderr, "\n");
 
