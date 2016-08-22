@@ -1,0 +1,111 @@
+diff --git a/clean/demo-beat.sh b/clean/demo-beat.sh
+index 34b0bde..2eb4a03 100755
+--- a/clean/demo-beat.sh
++++ b/clean/demo-beat.sh
+@@ -1,3 +1,3 @@
+ #!/bin/bash
+ 
+-./generate-sines 44100 441000 440 440.5 | aplay -r44100 -fS32_LE
++generate-sines 44100 441000 440 440.5 | aplay -r44100 -fS32_LE
+diff --git a/clean/demo-exponential.sh b/clean/demo-exponential.sh
+index 2f4ad14..785feef 100755
+--- a/clean/demo-exponential.sh
++++ b/clean/demo-exponential.sh
+@@ -4,4 +4,4 @@ awk '{
+     for(i = 0; i < 8000; i++) {
+         print(sin(2 * 3.141592 * 440 * i**1.2 / 8000));
+     }
+-}' | ./human2raw | aplay -r8000 -f S32_LE
++}' | human2raw | aplay -r8000 -f S32_LE
+diff --git a/clean/demo-musical-scale-chords.sh b/clean/demo-musical-scale-chords.sh
+index 3e37a2c..65165dc 100755
+--- a/clean/demo-musical-scale-chords.sh
++++ b/clean/demo-musical-scale-chords.sh
+@@ -9,4 +9,4 @@
+           0.3 * sin(2 * 3.141592 * 440 * 2**(scale[$3 % 8] / 12) * i / 8000) \
+         );
+     }
+-}' | ./human2raw | aplay -r8000 -f S32_LE
++}' | human2raw | aplay -r8000 -f S32_LE
+diff --git a/clean/demo-musical-scale.sh b/clean/demo-musical-scale.sh
+index 7cb0253..482044d 100755
+--- a/clean/demo-musical-scale.sh
++++ b/clean/demo-musical-scale.sh
+@@ -5,4 +5,4 @@
+     for(i = 0; i < 4000; i++) {
+         print(sin(2 * 3.141592 * 440 * 2**(scale[$1 % 8] / 12) * i / 8000));
+     }
+-}' | ./human2raw | aplay -r8000 -f S32_LE
++}' | human2raw | aplay -r8000 -f S32_LE
+diff --git a/clean/demo-sines-with-awk.sh b/clean/demo-sines-with-awk.sh
+index e13b3e9..d0472f8 100755
+--- a/clean/demo-sines-with-awk.sh
++++ b/clean/demo-sines-with-awk.sh
+@@ -4,4 +4,4 @@ awk '{
+     for(i = 0; i < 8000; i++) {
+         print(sin(2 * 3.141592 * 440 * i / 8000));
+     }
+-}' | ./human2raw | aplay -r8000 -f S32_LE
++}' | human2raw | aplay -r8000 -f S32_LE
+diff --git a/clean/pipe-via-sound.sh b/clean/pipe-via-sound.sh
+index b0ba70e..f16cd16 100755
+--- a/clean/pipe-via-sound.sh
++++ b/clean/pipe-via-sound.sh
+@@ -5,7 +5,7 @@
+ #
+ # Example usage:
+ #
+-#     ./generate-sines 8000 8000 440 | ./pipe-via-sound.sh 8000 44100 | ./print-spectrum 44100
++#     generate-sines 8000 8000 440 | pipe-via-sound.sh 8000 44100 | print-spectrum 44100
+ #
+ # The first parameter specifies the input bitrate, the second the output
+ # bitrate. Both default to 44100. An optional third parameter specifies how
+diff --git a/clean/print-spectrum.c b/clean/print-spectrum.c
+index fea1cfd..9a4b5da 100644
+--- a/clean/print-spectrum.c
++++ b/clean/print-spectrum.c
+@@ -10,7 +10,7 @@
+  *
+  * Usage:
+  *
+- *     arecord -t raw -fS32_LE -r44100 | ./print-spectrum 44100 11025
++ *     arecord -t raw -fS32_LE -r44100 | print-spectrum 44100 11025
+  *
+  * The first argument specifies the bitrate, the second argument how many
+  * samples should be read from STDIN.
+diff --git a/clean/simple-minded-fft.sh b/clean/simple-minded-fft.sh
+index d1af0e3..0fe0fbc 100755
+--- a/clean/simple-minded-fft.sh
++++ b/clean/simple-minded-fft.sh
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ 
+-./raw2human | awk "{
++raw2human | awk "{
+     i++;
+     print(\$1 * sin(2*3.1415926535897*$1*i/8000));
+ }"
+diff --git a/clean/watch-spectrum.sh b/clean/watch-spectrum.sh
+index cfd6a2e..65e4b8c 100755
+--- a/clean/watch-spectrum.sh
++++ b/clean/watch-spectrum.sh
+@@ -17,5 +17,5 @@ EOF
+ 
+     sleep 5  # give gnuplot time to start
+ 
+-    arecord -f S32_LE -r $bitrate -t raw | ./watch-spectrum $bitrate $samples_per_block $max_freq $min_freq
++    arecord -f S32_LE -r $bitrate -t raw | watch-spectrum $bitrate $samples_per_block $max_freq $min_freq
+ } | gnuplot -noraise
+diff --git a/clean/watch-waveform.sh b/clean/watch-waveform.sh
+index e12b22d..81389f9 100755
+--- a/clean/watch-waveform.sh
++++ b/clean/watch-waveform.sh
+@@ -17,7 +17,7 @@ EOF
+ 
+     while :; do
+         echo "plot '-' w l t '$(date +%H:%M:%S.%N)'"
+-        dd count=$samples_to_show bs=4 2>/dev/null | ./raw2human
++        dd count=$samples_to_show bs=4 2>/dev/null | raw2human
+         echo e
+         dd count=$samples_to_skip bs=4 &>/dev/null
+     done
